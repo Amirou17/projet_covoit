@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{% block body %}
+    {% block header %}
+        <h1 class="text-center">Veuillez vous inscritre !</h1>
+
+        {{ form_start(form) }}
+        {{ form_row(form.firstName, {'attr': {'placeholder': "Votre nom"}}) }}
+        {{ form_row(form.lastName, {'attr': {'placeholder': "Votre prénom"}}) }}
+        {{ form_row(form.phoneNumber, {'attr': {'placeholder': "Votre téléphone"}}) }}
+
+        {{ form_row(form.email, {'attr': {'placeholder': "Votre email : user@gmail.com"}}) }}
+        {{ form_row(form.password, {'attr': {'placeholder': "Choisir un mot de passe"}}) }}
+        {{ form_row(form.confirm_password, {'attr': {'placeholder': "Confirmer le mot de passe !"}}) }}
+
+        {{ form_row(form.town, {'attr': {'placeholder': "Votre domicile"}}) }}
+        {{ form_row(form.street, {'attr': {'placeholder': "Votre adresse"}}) }}
+        {{ form_row(form.postCode, {'attr': {'placeholder': "Votre postale : 44300"}}) }}
+
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-secondary">Soumettre</button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    {% endblock %}
+{% endblock %}

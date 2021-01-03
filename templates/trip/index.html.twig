@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+{% block title %}Site de CoVoiturage{% endblock %}
+
+{% block body %}
+    {% block header %}
+
+        <div class="bg-danger text-white text-center w-75 p-3 mt-3 mb-2 mx-auto">
+            Ce site est en contruction.
+        </div>
+
+        <div class="jumbotron">
+            <h5 class="display-0">En un clic, reserver votre trajet !</h5>
+            <hr class="my-4">
+            {{ form_start(form) }}
+            {{ form_row(form.CityDeparture, {'attr': {'placeholder': "Ville de depart"}}) }}
+            {{ form_row(form.cityDestination, {'attr': {'placeholder': "Ville de destination"}}) }}
+            {{ form_row(form.numberPlaces, {'attr': {'placeholder': "Nombres de places"}}) }}
+            {{ form_end(form) }}
+
+            <div class="container mt-1">
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-lg btn-secondary " disabled>Primary button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="card-deck m-5">
+
+            {% for trip in trips %}
+            <div class="card">
+                <a href="#" style="text-decoration: none" class="">
+                    <img src="http://placehold.it/350x150" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title text-dark">{{ trip.nameTrip }}</h3>
+                        <p class="card-text text-secondary">Je voyage le {{ trip.dateDeparture | date('d/m/Y')  }} à {{ trip.departureTime | date('H:i') }}
+                        à {{ trip.cityDestination }}
+                        </p>
+                        <p class="cart-text text-secondary">Heure d'arrivée prevue : {{ trip.dateArrival | date('d/m/Y') }} à {{ trip.timeArrival | date('H:i') }}</p>
+                        <p class="card-text text-secondary">Prix : {{ trip.price }} £ </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>-->
+
+        <div class="jumbotron">
+            <h5 class="display-0">Nos différents trajets</h5>
+            <hr class="my-4">
+            <div class="row">
+                {% for trip in trips %}
+                    <div class="col-sm-4 mb-3">
+                        <a href="{{ path('view.trip', {slug: trip.slug}) }}">
+                        <div class="btn btn-success">
+                            {{ trip.nameTrip }}
+                            <span class="badge text-primary">
+                                {{ trip.price }}€
+                            </span>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <a class="btn btn-primary float-right btn-lg m-2" href="#" role="button">Plus de trajets</a>
+        </div>
+
+    {% endblock %}
+{% endblock %}

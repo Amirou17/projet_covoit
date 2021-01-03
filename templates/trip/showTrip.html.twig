@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body%}
+    {% block header %}
+        <div class="container bg-light mt-3">
+            <div class="container">
+                <div class="card m-auto" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ trip.nameTrip }}</h5>
+                        <p class="card-text">
+                            Depart : {{ trip.dateDeparture | date('d/m/Y') }} à {{ trip.departureTime | date('H:i') }}<br/>
+                            Heure d'arrivée prévue : {{ trip.dateArrival | date('d/m/Y') }} à {{ trip.timeArrival | date('H:i') }}<br/>
+                        </p>
+                        <hr class="my-4">
+                        <p class="text-danger">
+                            Message :
+                        </p>
+                        <p>
+                            Pas de Cigarette, pas d'animaux.
+                            J'aime bien parlé et écouté de la musique
+                        </p>
+                        <a href="#" class="btn btn-primary float-right">Reserver</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <h4>Autres trajets</h4>
+            <div class="card-deck">
+                {% for otherTrip in otherTrips %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ otherTrip.nameTrip }}</h5>
+                        <p class="card-text">
+                            Depart : {{ otherTrip.dateDeparture | date('d/m/Y') }} à {{ otherTrip.departureTime | date('H:i') }}<br/>
+                            Heure d'arrivée prévue : {{ otherTrip.dateArrival | date('d/m/Y') }} à {{ otherTrip.timeArrival | date('H:i') }}<br/>
+                        </p>
+                        <hr class="my-4">
+                        <p class="text-danger">
+                            Message :
+                        </p>
+                        <p>
+                            Pas de Cigarette, pas d'animaux.
+                            J'aime bien parlé et écouté de la musique
+                        </p>
+                        <a href="#" class="btn btn-primary float-right">Reserver</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+
+    {% endblock header %}
+{% endblock %}

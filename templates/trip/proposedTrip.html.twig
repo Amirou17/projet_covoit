@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h5 class="display-0">Les trajets que vous avez proposé ! </h5>
+        <hr class="my-4">
+        <div class="row">
+            {% for trip in proposedTrips %}
+                <div class="col-sm-4 mb-3">
+                    <a href="{{ path('view.trip', {slug: trip.slug}) }}">
+                        <div class="btn btn-success">
+                            {{ trip.nameTrip }}
+                            <span class="badge text-primary">
+                                {{ trip.price }}€
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

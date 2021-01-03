@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{% block body %}
+    {% block header %}
+
+        {% if app.user %}
+            <h1 class="text-center">Créer un trajet ? Allons-y !</h1>
+            {% if app.user %}
+                {{ form_start(form) }}
+                {{ form_row(form.cityDeparture, {'attr': {'placeholder': "Ville de depart"}}) }}
+                {{ form_row(form.dateDeparture) }}
+                {{ form_row(form.departureTime) }}
+
+                {{ form_row(form.cityDestination, {'attr': {'placeholder': "Ville de Destination"}}) }}
+                {{ form_row(form.dateArrival) }}
+                {{ form_row(form.timeArrival) }}
+
+                {{ form_row(form.numberPlaces, {'attr': {'placeholder': "Ville de Destination"}}) }}
+                {{ form_row(form.price, {'attr': {'placeholder': "Nombre de places"}}) }}
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-lg btn-secondary ">Soumettre</button>
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            {% else %}
+                <div class="container text-center">
+                    <h2>
+                        <a href="{{ path('app_login') }}">Veuillez vous connecter</a>
+                    </h2>
+                </div>
+            {% endif %}
+        {% else %}
+            <form method="post" action="{{ path('app_login') }}">
+
+                <h1 class="h3 mb-3 font-weight-normal">Connectez-vous ! </h1>
+                <label for="inputEmail">Email</label>
+                <input type="email" value="" name="email" placeholder="Adresse email" id="inputEmail" class="form-control" required autofocus>
+                <label for="inputPassword">Password</label>
+                <input type="password" name="password" id="inputPassword" placeholder="Mot de passe !" class="form-control" required>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+                #}
+
+                <button class="btn btn-lg btn-success mt-2" type="submit">
+                    Connexion
+                </button>
+            </form>
+        {% endif %}
+
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Bonjour</h1><br>
+    <button class="btn btn-outline btn btn-primary my-2 mx-2 my-sm-0" type="submit">
+        <a href="{{ path('show.user', {id: user.id}) }}" class="text-white" style="text-decoration: none">
+            Déconnexion
+        </a>
+    </button>
+
+{% endblock %}
